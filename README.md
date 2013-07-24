@@ -1,4 +1,5 @@
-pluto
+Pluto
 =====
 
-node.js remote controller
+websockets remote controller for node.js
+
