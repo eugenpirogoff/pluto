@@ -1,22 +1,25 @@
 {
   "name": "pluto",
   "description": "websocket remote controller for node",
-  "version": "0.0.1",
+  "version": "0.0.1-1",
   "author": "Eugen Pirogoff <eugenpirogoff@me.com>",
   "license": "MIT",
   "dependencies": {
     "socket.io": ">= 0.9.x",
-    "express": ">= 3.3.x", 
+    "express": ">= 3.3.x",
     "jade": ">= 0.33.x"
   },
   "engines": {
-    "node": ">= 0.10.x",
-    "npm": ">= 1.3.x"
+    "node": ">= 0.10.x"
   },
   "repositories": [
     {
       "type": "git",
       "url": "https://github.com/eugenpirogoff/pluto.git"
     }
-  ]
+  ],
+  "subdomain": "pluto-bsc",
+  "scripts": {
+    "start": "node app.js"
+  }
 }

@@ -25,5 +25,8 @@ app.configure(function (){
 	app.use(app.router);
 });
 
-app.get('/', routes.index); /* Basic Routing */
+app.get('/', routes.index); /* Basic Routing for '/' to the index.jade template inside the index.js */
 
+app.configure('development', function(){
+  app.use(express.errorHandler());
+});
