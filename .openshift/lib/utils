@@ -4,11 +4,24 @@
 #
 
 
-#  Returns the configured Node version - defaults to 0.8.24.
+#  Returns the configured Node version
 function get_node_version() {
-   marker="$OPENSHIFT_REPO_DIR/.openshift/markers/NODEJS_VERSION"
-   nodejs_ver=$(egrep -v "^\s*#.*" "$marker" | egrep -v "^\s*$" | tail -1)
-   echo "${nodejs_ver:-"0.8.24"}"
+   # read the app's package.json file
+   package_json="${OPENSHIFT_REPO_DIR}/package.json"
+
+   # attempt to detect the desired node.js version
+   engine=$(grep "\"node\"" "$package_json" | tail -n 1 | sed -e 's/^.*" *[~=<>]*[=<>]* *v*\([0-9][^" ]*\) *[^"]*".*$/\1/p;d')
+
+   # assume that a deprecated marker value is a reasonable default
+   marker="${OPENSHIFT_REPO_DIR}.openshift/markers/NODEJS_VERSION"
+   marker_ver=$(egrep -v "^\s*#.*" "$marker" 2>/dev/null | egrep -v "^\s*$" | tail -1)
+   
+   # use the OpenShift cart default of 0.6.20 as a final option:
+   if [ -z $engine ]; then
+       echo ${marker_ver-"0.6.20"}
+   else
+       echo ${engine}
+   fi
 
 }  #  End of function  get_node_version.
 
@@ -54,8 +67,8 @@ function _install_nodejs() {
    ver=${1:-"$(get_node_version)"}
 
    # Sample download links:
-   #    http://nodejs.org/dist/v0.8.24/node-v0.8.24-linux-x64.tar.gz
-   #    http://nodejs.org/dist/v0.10.10/node-v0.10.10-linux-x64.tar.gz
+   #    http://nodejs.org/dist/v0.8.9/node-v0.8.9-linux-x64.tar.gz
+   #    http://nodejs.org/dist/v0.9.1/node-v0.9.1-linux-x64.tar.gz
    zfile="node-v${ver}-linux-x64.tar.gz"
    zlink="http://nodejs.org/dist/v${ver}/${zfile}"
 
