@@ -1,31 +1,25 @@
 {
-  "name": "OpenShift-Nodejs-Cartridge",
-  "version": "1.1.0",
-  "description": "Node.js Cartridge for OpenShift",
-  "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
-  ],
+  "name": "pluto",
+  "description": "websocket remote controller for node",
+  "version": "0.0.1",
   "author": {
-    "name": "OpenShift",
-    "email": "ryanj@redhat.com",
-    "url":  "http://openshift.redhat.com/"
+    "name": "Eugen Pirogoff",
+    "email": "eugenpirogoff@me.com",
+    "url":  "http://www.eugenpirogoff.de/"
   },
-  "homepage": "http://openshift.redhat.com/",
+  "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "https://gitub.com/openshift/nodejs-custom-version-openshift.git"
+      "type": "git",
+      "url": "https://github.com/eugenpirogoff/pluto.git"
   },
-
+  "dependencies": {
+    "socket.io": ">= 0.9.x",
+    "express": ">= 3.3.x",
+    "jade": ">= 0.33.x"
+  },
   "engines": {
     "node": ">= 0.10.9",
     "npm": ">= 1.0.0"
-  },
-
-  "dependencies": {
-    "express": "*"
   },
   "devDependencies": {},
   "bundleDependencies": [],
