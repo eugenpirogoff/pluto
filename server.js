@@ -1,122 +1,62 @@
-var app = require('express').createServer();
-app.get('/', function(req, res) {
-    res.send('Hello from <a href="http://appfog.com">AppFog.com</a>');
+// var app = require('express').createServer();
+// app.get('/', function(req, res) {
+//     res.send('Hello from <a href="http://appfog.com">AppFog.com</a>');
+// });
+// app.listen(process.env.VCAP_APP_PORT || 3000);
+
+
+/**
+* Pluto - Websocket Remote for Node.js
+* Eugen Pirogoff
+* web: http://www.eugenpirogoff.de
+* mail: eugenpirogoff@me.com
+**/
+
+var http = require('http'), /* HTTP Server */
+    express = require('express'), /* Express Framework */
+    routes = require('./routes'); /* routes folder on filesystem, to know what to do with routing */
+
+var app = express(); /* creating app from framework */
+var port = process.env.PORT || 3000; /* fetching Port from enviroment or taking 3000*/
+var server = app.listen(port, function(){
+    console.log("App listening on Port : "+port); /* starting server on port 3000  or enviroment Port*/
+}); 
+var io = require('socket.io').listen(server); /* var io for listening for sockets on port 3000 on sever */
+
+app.configure(function (){
+    app.use(express.static(__dirname + '/public')); /*here goes our static content, games etc*/
+    app.use(express.logger('dev')); /* Logging for Development Cycle*/
+    app.use(express.bodyParser());
+    app.use(app.router);
 });
-app.listen(process.env.VCAP_APP_PORT || 3000);
+
+app.get('/', routes.index); /* Basic Routing for '/' to inside the index.js */
+app.get('/env', function(req, res){
+    var body = process.env;
+    res.send(body);
+})
+
+app.configure('development', function(){
+  app.use(express.errorHandler());
+});
 
 
 
-// /**
-// * Pluto - Websocket Remote for Node.js
-// * Eugen Pirogoff
-// * web: http://www.eugenpirogoff.de
-// * mail: eugenpirogoff@me.com
-// **/
+io.sockets.on('connection', function (socket) {
+    //socket.emit('', { hello: 'world' });
+    console.log("This client has the following id :  %s", socket.id);
+    console.log("This is the Data : %s", socket);
 
-// var http = require('http'), /* HTTP Server */
-//     express = require('express'), /* Express Framework */
-//     routes = require('./routes'); /* routes folder on filesystem, to know what to do with routing */
+    socket.on('send_event', function (data){
+        console.log(data);
+    });
 
-// var Pluto = function(){
+    // socket.on('pluto_connect', function (data){
+    //     console.log('Pluto is Connected');
+    //     console.log(data);
+    // });
 
-//     var self = this; /* setting the scope */
-
-//      /**
-//      *  Set up server IP address and port # using env variables/defaults.
-//      */
-//     self.setupVariables = function() {
-//         //  Set the environment variables we need.
-//         self.ipaddress = process.env.OPENSHIFT_INTERNAL_IP;
-//         self.port      = process.env.OPENSHIFT_INTERNAL_PORT || 3000;
-
-//         if (typeof self.ipaddress === "undefined") {
-//             self.ipaddress = "127.0.0.1";
-//             console.warn('No OPENSHIFT_INTERNAL_IP var, using 127.0.0.1');
-//         };
-//     };
-
-
-//         /**
-//      *  terminator === the termination handler
-//      *  Terminate server on receipt of the specified signal.
-//      *  @param {string} sig  Signal to terminate on.
-//      */
-//     self.terminator = function(sig){
-//         if (typeof sig === "string") {
-//            console.log('%s: Received %s - terminating Pluto ...',
-//                        Date(Date.now()), sig);
-//            process.exit(1);
-//         }
-//         console.log('%s: Node server stopped.', Date(Date.now()) );
-//     };
-
-
-//     /**
-//      *  Setup termination handlers (for exit and a list of signals).
-//      */
-//     self.setupTerminationHandlers = function(){
-//         //  Process on exit and signals.
-//         process.on('exit', function() { self.terminator(); });
-
-//         // Removed 'SIGPIPE' from the list - bugz 852598.
-//         ['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT',
-//          'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'
-//         ].forEach(function(element, index, array) {
-//             process.on(element, function() { self.terminator(element); });
-//         });
-//     };
-
-
-//     /**
-//      *  Initialize the server (express) and create the routes and register
-//      *  the handlers.
-//      */
-//     self.initializeServer = function() {
-//         self.app = express();
-
-//         self.app.configure(function() {
-//             self.app.set('views', __dirname + '/views');
-//             self.app.set('view engine', 'jade');
-//             self.app.use(express.logger('dev'));
-//             self.app.use(express.bodyParser());
-//             self.app.use(express.methodOverride());
-//             self.app.use(self.app.router);
-//             self.app.use(express.static( __dirname + '/public'));
-//         });
-
-//         //  Add handlers for the app (from the routes).
-//         self.app.get('/', routes.index);
-
-//     }
-
-
-//     /**
-//      *  Initializes the sample application.
-//      */
-//     self.initialize = function() {
-//         self.setupVariables();
-//         self.setupTerminationHandlers();
-
-//         // Create the express server and routes.
-//         self.initializeServer();
-//     };
-
-
-//     /**
-//      *  Start the server (starts up the sample application).
-//      */
-//     self.start = function() {
-//         //  Start the app on the specific interface (and port).
-//         self.app.listen(self.port, self.ipaddress, function() {
-//             console.log('%s: Node server started on %s:%d ...',
-//                         Date(Date.now() ), self.ipaddress, self.port);
-//         });
-//     };
-// };
-
-
-// var wowwow = new Pluto();
-// wowwow.initialize();
-// wowwow.start();
-
-
+    // socket.on('send_event', function(data){
+    //     console.log("This is the Data from send_event frontend : %s", data)
+    // });
+});

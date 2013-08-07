@@ -1,0 +1,175 @@
+<html>
+<head>
+	<title>Pluto:Controller</title>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+
+  var send_event = function (data){
+  	socket.emit('send_event', data);
+  };
+</script>
+</head>
+<body>
+
+<table border="1" bordercolor="#FFCC00" style="background-color:#FFFFCC" width="100%" cellpadding="3" cellspacing="3">
+	<tr>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+	</tr>
+	<tr>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+	</tr>
+	<tr>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+	</tr>
+	<tr>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td><button onclick="send_event(this.innerHTML)">UP</button></td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+	</tr>
+	<tr>
+		<td>Table Cell</td>
+		<td><button onclick="send_event(this.innerHTML)">LEFT</button></td>
+		<td>Table Cell</td>
+		<td><button onclick="send_event(this.innerHTML)">RIGHT</button></td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td><button onclick="send_event(this.innerHTML)">B</button></td>
+		<td>Table Cell</td>
+		<td><button onclick="send_event(this.innerHTML)">A</button></td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+	</tr>
+	<tr>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td><button onclick="send_event(this.innerHTML)">DOWN</button></td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+	</tr>
+	<tr>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+	</tr>
+	<tr>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+		<td>Table Cell</td>
+	</tr>
+</table>
+
+
+
+
+
+<table border="1" cellspacing="10">
+</table>
+
+
+</body>
+</html>
