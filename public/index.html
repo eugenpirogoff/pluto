@@ -1,165 +1,172 @@
 <html>
 <head>
 	<title>Pluto:Controller</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/client.css">
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io.connect('http://localhost');
+  var socket = io.connect(document.domain);
   socket.on('news', function (data) {
     console.log(data);
     socket.emit('my other event', { my: 'data' });
   });
 
+  // socket.on('response', function(data){
+  // 	alert(data.toSource);
+  // });
+
   var send_event = function (data){
   	socket.emit('send_event', data);
+  	console.log('sending event with data : %s', data);
   };
 </script>
 </head>
 <body>
 
-<table border="1" bordercolor="#FFCC00" style="background-color:#FFFFCC" width="100%" cellpadding="3" cellspacing="3">
+<table class="layout">
 	<tr>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
 	</tr>
 	<tr>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
 	</tr>
 	<tr>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
 	</tr>
 	<tr>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td><button onclick="send_event(this.innerHTML)">UP</button></td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><button onmousedown="send_event(this.innerHTML)">UP</button></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
 	</tr>
 	<tr>
-		<td>Table Cell</td>
-		<td><button onclick="send_event(this.innerHTML)">LEFT</button></td>
-		<td>Table Cell</td>
-		<td><button onclick="send_event(this.innerHTML)">RIGHT</button></td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td><button onclick="send_event(this.innerHTML)">B</button></td>
-		<td>Table Cell</td>
-		<td><button onclick="send_event(this.innerHTML)">A</button></td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
+		<td><div class="spacer"></td>
+		<td><button onmousedown="send_event(this.innerHTML)">LEFT</button></td>
+		<td><div class="spacer"></td>
+		<td><button onmousedown="send_event(this.innerHTML)">RIGHT</button></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><button onmousedown="send_event(this.innerHTML)">B</button></td>
+		<td><div class="spacer"></td>
+		<td><button onmousedown="send_event(this.innerHTML)">A</button></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
 	</tr>
 	<tr>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td><button onclick="send_event(this.innerHTML)">DOWN</button></td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><button onmousedown="send_event(this.innerHTML)">DOWN</button></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
 	</tr>
 	<tr>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
 	</tr>
 	<tr>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
-		<td>Table Cell</td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
+		<td><div class="spacer"></td>
 	</tr>
 </table>
 

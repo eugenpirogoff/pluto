@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Pluto:Game</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/game.css">
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect(document.domain);
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+
+  // socket.on('response', function(data){
+  // 	alert(data.toSource);
+  // });
+
+  var send_event = function (data){
+  	socket.emit('send_event', data);
+  	console.log('sending event with data : %s', data);
+  };
+</script>
+</head>
+<body>
+<button onmousedown="send_event(this.innerHTML)">UP</button>
+<button onmousedown="send_event(this.innerHTML)">DOWN</button>
+<button onmousedown="send_event(this.innerHTML)">LEFT</button>
+<button onmousedown="send_event(this.innerHTML)">RIGHT</button>
+
+</body>
+</html>

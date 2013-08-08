@@ -35,10 +35,12 @@ app.get('/env', function(req, res){
     var body = process.env;
     res.send(body);
 })
+app.get('/game', routes.index);
 
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
+
 
 
 
@@ -48,15 +50,11 @@ io.sockets.on('connection', function (socket) {
     console.log("This is the Data : %s", socket);
 
     socket.on('send_event', function (data){
-        console.log(data);
+        console.log("You pushed a Button: %s now. ",data);
+
+        // socket.emit('response', function(data){
+        //     alert("send");
+        // });
     });
 
-    // socket.on('pluto_connect', function (data){
-    //     console.log('Pluto is Connected');
-    //     console.log(data);
-    // });
-
-    // socket.on('send_event', function(data){
-    //     console.log("This is the Data from send_event frontend : %s", data)
-    // });
 });
