@@ -1,60 +1,54 @@
-// var app = require('express').createServer();
-// app.get('/', function(req, res) {
-//     res.send('Hello from <a href="http://appfog.com">AppFog.com</a>');
-// });
-// app.listen(process.env.VCAP_APP_PORT || 3000);
-
-
 /**
 * Pluto - Websocket Remote for Node.js
 * Eugen Pirogoff
 * web: http://www.eugenpirogoff.de
 * mail: eugenpirogoff@me.com
 **/
+    express = require('express.io');
 
-var http = require('http'), /* HTTP Server */
-    express = require('express'), /* Express Framework */
-    routes = require('./routes'); /* routes folder on filesystem, to know what to do with routing */
+app = require('express.io')()
+app = module.exports = express();
+app.http().io();
 
-var app = express(); /* creating app from framework */
-var port = process.env.PORT || 3000; /* fetching Port from enviroment or taking 3000*/
-var server = app.listen(port, function(){
-    console.log("App listening on Port : "+port); /* starting server on port 3000  or enviroment Port*/
-}); 
-var io = require('socket.io').listen(server); /* var io for listening for sockets on port 3000 on sever */
+// If nothing is set this ID will be set for communication
+var pluto_id = '000000';
 
-app.configure(function (){
-    app.use(express.static(__dirname + '/public')); /*here goes our static content, games etc*/
-    app.use(express.logger('dev')); /* Logging for Development Cycle*/
-    app.use(express.bodyParser());
-    app.use(app.router);
+app.configure(function() {
+	app.use(express["static"](__dirname + '/public'));
+    app.set('rootDir', __dirname);
 });
 
-app.get('/', routes.index); /* Basic Routing for '/' to inside the index.js */
-app.get('/env', function(req, res){
-    var body = process.env;
-    res.send(body);
+comet = {}
+comet['pluto_id']=pluto_id
+
+app.io.route('pluto_data', function(req){
+	req.io.join(req.data['pluto_id'])
+	console.log(req.data['pluto_data'])
+	req.io.room(req.data['pluto_id']).broadcast('pluto_relay', req.data)
+	// req.io.room(req.data['pluto_id']).broadcast('pluto_relay',{
+	// 	comet['pluto_id'] = req.data['pluto_id']
+	// 	comet['pluto_data'] = req.data['pluto_data']
+	// })
+	// req.io.room(req.data).broadcast('pluto_relay',{
+	// 	message: 'New client joined ' + req.data + ' here.'
+	// })
 })
-app.get('/game', routes.index);
-
-app.configure('development', function(){
-  app.use(express.errorHandler());
-});
 
 
 
+// app.configure(function(){
+//   app.use(express.methodOverride());
+//   app.use(express.bodyParser());
+//   app.use(express.static(__dirname + '/public'));
+//   app.use(express.errorHandler({
+//     dumpExceptions: true, 
+//     showStack: true
+//   }));
+//   app.use(app.router);
+// });
 
-io.sockets.on('connection', function (socket) {
-    //socket.emit('', { hello: 'world' });
-    console.log("This client has the following id :  %s", socket.id);
-    console.log("This is the Data : %s", socket);
+// app.get('/controller', function(req,res){
+// 	res.sendfile(__dirname + '/public/controller/index.html')
+// })
 
-    socket.on('send_event', function (data){
-        console.log("You pushed a Button: %s now. ",data);
-
-        // socket.emit('response', function(data){
-        //     alert("send");
-        // });
-    });
-
-});
+app.listen(3000);

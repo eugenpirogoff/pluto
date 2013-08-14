@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>Pluto:Controller</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+io = io.connect(document.domain)
+var pluto_id = '000000';
+var comet = {}
+
+var pluto_send = function(data){
+	comet['pluto_data']=data
+	comet['pluto_id']=pluto_id
+
+	io.emit('pluto_data', comet)
+	console.log('EMITTING :' + comet['pluto_data'])
+}
+
+io.on('pluto_relay', function(data){
+	$('#log').html(data['pluto_data'])
+	console.log('RECEIVED : ' + data['pluto_data'])
+})
+
+
+
+</script>
+</head>
+<body>
+<div class="wrapper">
+<div class="pluto_left">
+<button class="pluto_client_cursor" id="up" touchstart="pluto_send(this.innerHTML)">UP</button>
+<button class="pluto_client_cursor" id="down" onmousedown="pluto_send(this.innerHTML)">DOWN</button>
+<button class="pluto_client_cursor" id="left" onmousedown="pluto_send(this.innerHTML)">LEFT</button>
+<button class="pluto_client_cursor" id="right" onmousedown="pluto_send(this.innerHTML)">RIGHT</button>
+</div>
+<div class="pluto_right">
+<button class="pluto_client_fire" id="a" onmousedown="pluto_send(this.innerHTML)">A</button>
+<button class="pluto_client_fire" id="b" onmousedown="pluto_send(this.innerHTML)">B</button>
+</div>
+</div>
+
+
+</body>
+</html>

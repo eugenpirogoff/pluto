@@ -15,7 +15,8 @@
   "dependencies": {
     "socket.io": ">= 0.9.x",
     "express": ">= 3.3.x",
-    "jade": ">= 0.33.x"
+    "jade": ">= 0.33.x", 
+    "socket.io-connect": "*",
   },
   "engines": {
     "node": ">= 0.10.13",
@@ -23,7 +24,6 @@
   },
   "devDependencies": {},
   "bundleDependencies": [],
-
   "private": true,
   "scripts": {
     "start": "node server.js"

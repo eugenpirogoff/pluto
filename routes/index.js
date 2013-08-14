@@ -6,9 +6,13 @@
 **/
 
 exports.index = function(req, res){
-  res.render('index.html')
+	res.render('public/index.html');
 };
 
 exports.game = function(req, res){
-	res.render('game/index.html')
+	res.render('public/game/index.html');
+};
+
+exports.controller = function(req, res){
+	res.render('public/controller/index.html');
 };
