@@ -51,4 +51,4 @@ app.io.route('pluto_data', function(req){
 // 	res.sendfile(__dirname + '/public/controller/index.html')
 // })
 
-app.listen(3000);
+app.listen(process.env.VCAP_APP_PORT || 3000);

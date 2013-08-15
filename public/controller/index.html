@@ -1,9 +1,16 @@
 <html>
 <head>
 	<title>Pluto:Controller</title>
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="/js/script.js"></script>
+
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<!-- <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+ --><script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
 <script src="/socket.io/socket.io.js"></script>
 <script>
 io = io.connect(document.domain)
@@ -24,23 +31,54 @@ io.on('pluto_relay', function(data){
 })
 
 
+function startup() {
+  var el = document.getElementsByTagName("canvas")[0];
+  el.addEventListener("touchstart", handleStart, false);
+  // el.addEventListener("touchend", handleEnd, false);
+  // el.addEventListener("touchcancel", handleCancel, false);
+  // el.addEventListener("touchleave", handleEnd, false);
+  // el.addEventListener("touchmove", handleMove, false);
+  console.log("initialized.");
+}
+
+function handleStart(evt) {
+  evt.preventDefault();
+  console.log("touchstart");
+  $('canvas').html('EVENT')
+
+
+  // var el = document.getElementsByTagName("canvas")[0];
+  // var ctx = el.getContext("2d");
+  // var touches = evt.changedTouches;
+        
+  // for (var i=0; i < touches.length; i++) {
+  //   log("touchstart:"+i+"...");
+  //   ongoingTouches.push(copyTouch(touches[i]));
+  //   var color = colorForTouch(touches[i]);
+  //   ctx.beginPath();
+  //   ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0,2*Math.PI, false);  // a circle at the start
+  //   ctx.fillStyle = color;
+  //   ctx.fill();
+  //   log("touchstart:"+i+".");
+  // }
+}
 
 </script>
 </head>
 <body>
 <div class="wrapper">
 <div class="pluto_left">
-<button class="pluto_client_cursor" id="up" touchstart="pluto_send(this.innerHTML)">UP</button>
-<button class="pluto_client_cursor" id="down" onmousedown="pluto_send(this.innerHTML)">DOWN</button>
-<button class="pluto_client_cursor" id="left" onmousedown="pluto_send(this.innerHTML)">LEFT</button>
-<button class="pluto_client_cursor" id="right" onmousedown="pluto_send(this.innerHTML)">RIGHT</button>
+<button class="pluto_client_cursor" id="up" ontouchstart="pluto_send(this.innerHTML)">UP</button>
+<button class="pluto_client_cursor" id="down" ontouchstart="pluto_send(this.innerHTML)">DOWN</button>
+<button class="pluto_client_cursor" id="left" ontouchstart="pluto_send(this.innerHTML)">LEFT</button>
+<button class="pluto_client_cursor" id="right" ontouchstart="pluto_send(this.innerHTML)">RIGHT</button>
 </div>
 <div class="pluto_right">
-<button class="pluto_client_fire" id="a" onmousedown="pluto_send(this.innerHTML)">A</button>
-<button class="pluto_client_fire" id="b" onmousedown="pluto_send(this.innerHTML)">B</button>
+<button class="pluto_client_fire" id="a" ontouchstart="pluto_send(this.innerHTML)">A</button>
+<button class="pluto_client_fire" id="b" ontouchstart="pluto_send(this.innerHTML)">B</button>
 </div>
 </div>
 
-
+<input type="button" value="Pluto:Index" ontouchstart="location.href='/';">
 </body>
 </html>

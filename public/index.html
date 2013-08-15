@@ -6,8 +6,13 @@
 <script src="script.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+ --><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
 <script>
-io = io.connect()
+io = io.connect(document.domain)
 
 var pluto_id = '000000';
 var comet = {}
@@ -20,7 +25,6 @@ io.on('pluto_relay', function(data){
 })
 
 
-
 </script>
 </head>
 <body>
@@ -30,7 +34,7 @@ io.on('pluto_relay', function(data){
 <input type="search" name="pluto_client_pin" min="5" max="10"></input>
 <button onmousedown="pluto_join_game()">Join Game</button>
 </div>
-
+<input type="button" value="Controller" onclick="location.href='/controller';">
 <div class="pluto_client_emitter">
 pluto client emitter
 </div>
