@@ -1,7 +1,7 @@
 {
   "name": "pluto",
   "description": "websocket remote controller for node",
-  "version": "0.0.1-5",
+  "version": "0.0.1-6",
   "author": {
     "name": "Eugen Pirogoff",
     "email": "eugenpirogoff@me.com",
@@ -18,11 +18,11 @@
   "engines": {
     "node": ">= 0.8.x",
     "npm": ">= 1.0.0"
-  },  
-  "subdomain": "jesusabdullah",
-   "domains": [
-    "plut.io",
-    "www.plut.io"
+  },
+  "subdomain": "pluto",
+  "domains": [
+    "pluto.jit.su",
+    "www.pluto.jit.su/"
   ],
   "devDependencies": {},
   "bundleDependencies": [],
@@ -30,6 +30,5 @@
   "scripts": {
     "start": "node server.js"
   },
-  "main": "server.js",
-  "subdomain": "eugenpirogoff-pluto"
+  "main": "server.js"
 }

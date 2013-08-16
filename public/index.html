@@ -1,44 +1,64 @@
 <html>
 <head>
 	<title>Pluto:Index</title>
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="script.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="//codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="/socket.io/socket.io.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/script.js"></script>
 
-<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
- --><script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-
-<script>
-io = io.connect(document.domain)
-
-var pluto_id = '000000';
-var comet = {}
-comet['pluto_id']=pluto_id
-
-io.emit('pluto_data', comet)
-
-io.on('pluto_relay', function(data){
-	$('.pluto_client_emitter').html(data['pluto_data'])
-})
-
-
-</script>
 </head>
 <body>
 
-<h1> THIS IS PLUUUUUTOOOOO!!!!!!!<h1>
-<div>
-<input type="search" name="pluto_client_pin" min="5" max="10"></input>
-<button onmousedown="pluto_join_game()">Join Game</button>
-</div>
+<div id="container">
+	<div class="span7 header center">
+		<img class="logo" src="img/logo.png"/>pluto<br>
+		<p class="subtext">remote control for web applications</p>
+	</div>
 
-<input type="button" value="Controller" onclick="location.href='/controller';">
-<div class="pluto_client_emitter">
-pluto client emitter
-</div>
+	<div class="content center">
+		<table>
+			<td>
+				<tr>
+							<a href="http://de.wikipedia.org/wiki/WebSocket" target="_new">
+		<img class="logo_big" src="img/html.png"></img>
+		</a>
 
+		<p>HTML5 with WebSockets</p>
+				</tr>
+				<tr>
+
+
+		<a href="http://express-io.org/" target="_new">
+			<img class="logo_big" src="img/node.png"></img>
+		</a>
+
+		<p>Node.js with Express.IO</p>
+
+				</tr>
+			</td>
+		</table>
+
+
+
+		<br>
+
+        
+        <a href="/game" class="btn btn-success btn-large"><i class="icon-white icon-globe"></i> Try it out</a>
+
+
+<footer> 
+	<a href="http://www.eugenpirogoff.de" target="_tab">Eugen Pirogoff</a>
+</footer>
+
+
+
+</div>
+<a href="https://github.com/eugenpirogoff/pluto"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 </body>
 </html>

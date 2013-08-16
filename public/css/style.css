@@ -1,10 +1,59 @@
-body {
-	background-color: fefefe;
+#container{
+	width: 70%; 
+	max-width: 800px; 
+	margin: 0 auto; 
+	text-align: center;
+	font-family: 'Helvetica Neue', Helvetica, Arial;
 }
 
-.pluto_front {
-	width: 100px;
-	height: 100px;
-	border-radius: 10px;
-	background-color: pink;
+.header{
+	font-size: 8em;
+	font-weight: lighter;
+	color: #353535;
+	margin: 65px;
 }
+
+.subtext {
+	font-size: .15em;
+	color: #929292;
+	font-weight: 100;
+    margin: 1.4em;
+}
+
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+     width: 500px;
+}
+
+div.content{
+	padding: 1em;
+	font-size: 1.5em;
+	color: #cecece;
+}
+
+footer{
+	padding: 0.5em;
+	font-size: 0.5em;
+	color: #cecece;
+}
+
+.logo {
+	width: 60px;
+	height: 60px;
+	margin: 0.07em;
+}
+
+.logo_big {
+	width: 150px;
+	height: 150px;
+	cursor: pointer;
+}
+
+.sign {
+	font-size: 2.4em;
+	font-weight: 500;
+	margin-left: .35em;
+}
+
