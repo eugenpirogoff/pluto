@@ -1,11 +1,10 @@
-io = io.connect(document.domain)
+$(document).ready(function() {
+    console.log( "Script Loaded" );
+    var pluto_id = Math.floor(Math.random()*90000000) + 10000000;
+	$("#pluto_id").val(pluto_id);
+	$("#btn_game").attr('href','/game/'+pluto_id);
+	$("#btn_controller").attr('href', '/controller/'+pluto_id);
+	
+});
 
-var pluto_id = '000000';
-var comet = {}
-comet['pluto_id']=pluto_id
 
-io.emit('pluto_data', comet)
-
-io.on('pluto_relay', function(data){
-	$('.pluto_client_emitter').html(data['pluto_data'])
-})

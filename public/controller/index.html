@@ -3,82 +3,90 @@
 	<title>Pluto:Controller</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<script src="/js/script.js"></script>
+<script src="/controller/js/script.js"></script>
 
-
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-<!-- <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
- --><script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
 io = io.connect(document.domain)
-var pluto_id = '000000';
-var comet = {}
+var pluto_id = document.URL.split('/')[4];
+// var pluto_connected = true;
 
-var pluto_send = function(data){
-	comet['pluto_data']=data
-	comet['pluto_id']=pluto_id
+var pluto_data = {
+        	"controller_session" : pluto_id,
+			"controller_id" : null,
+			"message": "message",
+			"up" : false,
+			"down" : false,
+			"left" : false,
+			"right": false,
+			"a" : false, 
+			"b" : false
+        }
 
-	io.emit('pluto_data', comet)
-	console.log('EMITTING :' + comet['pluto_data'])
+var pluto_loop = function(data){
+		io.emit('pluto_data', pluto_data)
 }
 
-io.on('pluto_relay', function(data){
-	$('#log').html(data['pluto_data'])
-	console.log('RECEIVED : ' + data['pluto_data'])
-})
-
-
-function startup() {
-  var el = document.getElementsByTagName("canvas")[0];
-  el.addEventListener("touchstart", handleStart, false);
-  // el.addEventListener("touchend", handleEnd, false);
-  // el.addEventListener("touchcancel", handleCancel, false);
-  // el.addEventListener("touchleave", handleEnd, false);
-  // el.addEventListener("touchmove", handleMove, false);
-  console.log("initialized.");
+function set_pluto_data(id, value){
+	pluto_data[id] = value;
 }
 
-function handleStart(evt) {
-  evt.preventDefault();
-  console.log("touchstart");
-  $('canvas').html('EVENT')
+$(document).ready(function(){
+	up = document.getElementById("up");
+	down = document.getElementById("down");
+	left = document.getElementById("left");
+	right = document.getElementById("right");
+	a = document.getElementById("a");
+	b = document.getElementById("b");
 
 
-  // var el = document.getElementsByTagName("canvas")[0];
-  // var ctx = el.getContext("2d");
-  // var touches = evt.changedTouches;
-        
-  // for (var i=0; i < touches.length; i++) {
-  //   log("touchstart:"+i+"...");
-  //   ongoingTouches.push(copyTouch(touches[i]));
-  //   var color = colorForTouch(touches[i]);
-  //   ctx.beginPath();
-  //   ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0,2*Math.PI, false);  // a circle at the start
-  //   ctx.fillStyle = color;
-  //   ctx.fill();
-  //   log("touchstart:"+i+".");
-  // }
-}
+	// To-Do All the Other Buttons
+	up.addEventListener("touchstart", function() { set_pluto_data('up',true)});
+	up.addEventListener("touchend", function() {set_pluto_data('up', false)});
+	
+	down.addEventListener("touchstart", function() { set_pluto_data('down',true)});
+	down.addEventListener("touchend", function() {set_pluto_data('down', false)});
+
+	left.addEventListener("touchstart", function() { set_pluto_data('left',true)});
+	left.addEventListener("touchend", function() {set_pluto_data('left', false)});
+
+	right.addEventListener("touchstart", function() { set_pluto_data('right',true)});
+	right.addEventListener("touchend", function() {set_pluto_data('right', false)});
+
+	a.addEventListener("touchstart", function() { set_pluto_data('a',true)});
+	a.addEventListener("touchend", function() {set_pluto_data('a', false)});
+
+	b.addEventListener("touchstart", function() { set_pluto_data('b',true)});
+	b.addEventListener("touchend", function() {set_pluto_data('b', false)});
+
+	// To-Do add all the other Listeners and Touch-Types like 'touchcancel' etc.
+
+	// set up sending loop
+	var interval = self.setInterval(function(){pluto_loop(pluto_data)},50);
+	// To-Do .... tweak sending interval
+
+});
+
+pluto_data['controller_session'] = prompt("controller_session");
 
 </script>
 </head>
 <body>
 <div class="wrapper">
-<div class="pluto_left">
-<button class="pluto_client_cursor" id="up" ontouchstart="pluto_send(this.innerHTML)">UP</button>
-<button class="pluto_client_cursor" id="down" ontouchstart="pluto_send(this.innerHTML)">DOWN</button>
-<button class="pluto_client_cursor" id="left" ontouchstart="pluto_send(this.innerHTML)">LEFT</button>
-<button class="pluto_client_cursor" id="right" ontouchstart="pluto_send(this.innerHTML)">RIGHT</button>
-</div>
-<div class="pluto_right">
-<button class="pluto_client_fire" id="a" ontouchstart="pluto_send(this.innerHTML)">A</button>
-<button class="pluto_client_fire" id="b" ontouchstart="pluto_send(this.innerHTML)">B</button>
-</div>
+	<div class="pluto_left">
+		<button class="pluto_client_cursor" id="up">UP</button>
+		<button class="pluto_client_cursor" id="down">DOWN</button>
+		<button class="pluto_client_cursor" id="left">LEFT</button>
+		<button class="pluto_client_cursor" id="right">RIGHT</button>
+	</div>
+	<div class="pluto_right">
+		<button class="pluto_client_fire" id="a">A</button>
+		<button class="pluto_client_fire" id="b">B</button>
+	</div>
 </div>
 
-<input type="button" value="Pluto:Index" ontouchstart="location.href='/';">
 </body>
 </html>

@@ -1,7 +1,7 @@
 {
   "name": "pluto",
   "description": "websocket remote controller for node",
-  "version": "0.0.1-8",
+  "version": "0.0.1-11",
   "author": {
     "name": "Eugen Pirogoff",
     "email": "eugenpirogoff@me.com",
@@ -16,7 +16,7 @@
     "express.io": ">= x"
   },
   "engines": {
-    "node": ">= 0.8.x",
+    "node": ">= 0.10.x",
     "npm": ">= 1.0.0"
   },
   "subdomain": "pluto",

@@ -4,13 +4,12 @@
 * web: http://www.eugenpirogoff.de
 * mail: eugenpirogoff@me.com
 **/
-    express = require('express.io');
 
+express = require('express.io');
 app = require('express.io')()
 app = module.exports = express();
 app.http().io();
 
-// If nothing is set this ID will be set for communication
 var pluto_id = '000000';
 
 app.configure(function() {
@@ -18,37 +17,39 @@ app.configure(function() {
     app.set('rootDir', __dirname);
 });
 
-comet = {}
-comet['pluto_id']=pluto_id
+
+// routes with parameters passing
+app.get('/game/:pluto_pin', function(req, res){
+	pluto_pin = req.params.pluto_pin;
+	console.log("pluto_game connected with pin:" + pluto_pin)
+	res.sendfile(__dirname + '/public/game/index.html')
+});
+
+app.get('/controller/:pluto_pin', function(req, res){
+	pluto_pin = req.params.pluto_pin;
+	console.log("pluto_controller connected with pin :" + pluto_pin)
+	res.sendfile(__dirname + '/public/controller/index.html')
+});
+
+
+// pluto_data = {
+//         	"controller_session" : 222222,
+// 			"controller_id" : 333322221111,
+// 			"message": "my message string",
+// 			"up" : true,
+// 			"down" : true,
+// 			"left" : true,
+// 			"right": true,
+// 			"a" : true, 
+// 			"b" : true
+//         }
+
+// pluto_data['controller_id']=pluto_id
 
 app.io.route('pluto_data', function(req){
-	req.io.join(req.data['pluto_id'])
-	console.log(req.data['pluto_data'])
-	req.io.room(req.data['pluto_id']).broadcast('pluto_relay', req.data)
-	// req.io.room(req.data['pluto_id']).broadcast('pluto_relay',{
-	// 	comet['pluto_id'] = req.data['pluto_id']
-	// 	comet['pluto_data'] = req.data['pluto_data']
-	// })
-	// req.io.room(req.data).broadcast('pluto_relay',{
-	// 	message: 'New client joined ' + req.data + ' here.'
-	// })
+	req.io.join(req.data['controller_id'])
+	console.log(req.data);
+	req.io.room(req.data['controller_id']).broadcast('pluto_relay', req.data)
 })
-
-
-
-// app.configure(function(){
-//   app.use(express.methodOverride());
-//   app.use(express.bodyParser());
-//   app.use(express.static(__dirname + '/public'));
-//   app.use(express.errorHandler({
-//     dumpExceptions: true, 
-//     showStack: true
-//   }));
-//   app.use(app.router);
-// });
-
-// app.get('/controller', function(req,res){
-// 	res.sendfile(__dirname + '/public/controller/index.html')
-// })
 
 app.listen(process.env.VCAP_APP_PORT || 3000);
