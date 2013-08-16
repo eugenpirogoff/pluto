@@ -14,10 +14,10 @@
 }
 
 .subtext {
-	font-size: .15em;
+	font-size: .17em;
 	color: #929292;
 	font-weight: 100;
-    margin: 1.4em;
+    margin: 1.7em;
 }
 
 .center {
@@ -38,11 +38,7 @@
                  .tg-table-plain { border-collapse: collapse; border-spacing: 0; font-size: 100%; font: inherit; }
                  .tg-table-plain td { border: 0px #555 solid; padding: 10px; vertical-align: top; }
 
-div.content{
-	padding: 1em;
-	font-size: 1em;
-	color: #cecece;
-}
+
 
 footer{
 	padding: 0.8em;
@@ -62,10 +58,3 @@ footer{
 	height: 50px;
 	cursor: pointer;
 }
-
-.sign {
-	font-size: 2.4em;
-	font-weight: 500;
-	margin-left: .35em;
-}
-
