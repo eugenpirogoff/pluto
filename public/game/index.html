@@ -110,8 +110,10 @@
 			
 			init();
 
+io = io.connect(document.domain);
+var pluto_id = document.URL.split('/')[4];
 
-io = io.connect(document.domain)
+io.emit('pluto_join', pluto_id);
 
 function pluto_event_emitter(data) {
 	var plutoEvent = document.createEvent("Event");
@@ -121,8 +123,8 @@ function pluto_event_emitter(data) {
 };
 
 keys = {
-	"controller_session" : 000000,
-	"controller_id" : 333322221111,
+	"controller_session" : "no_session",
+	"controller_id" : "no_id",
 	"message": "my message string",
 	"up" : false,
 	"down" : false,
@@ -132,7 +134,9 @@ keys = {
 	"b" : false
 }
 
+
 io.on('pluto_relay', function(data){
+	//console.log("nothing happend");
 	console.log(data);
 	keys = data;
 	// $('.pluto_client_emitter').html(data['pluto_data'])

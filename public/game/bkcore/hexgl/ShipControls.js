@@ -136,7 +136,6 @@ bkcore.hexgl.ShipControls = function(domElement)
 
 	function onPlutoEvent(event){
 		//console.log(event);
-		console.log("Pluto Controller : " + event.data.controller_session);
 		self.key.forward = event.data.up;
 		self.key.backward = event.data.down;
 		self.key.left = event.data.left;
