@@ -1,6 +1,7 @@
 $(document).ready(function() {
     console.log( "Script Loaded" );
-    var pluto_id = Math.floor(Math.random()*900000) + 100000;
+    var pluto_id = Math.round(new Date().getTime()/100000.0);
+
 	$("#pluto_id").val(pluto_id);
 	$("#btn_controller").attr('href', '/controller/'+pluto_id);
 	$("#btn_game").attr('href', '/game/'+ pluto_id);
