@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95px" height="30px"
+	 viewBox="0 0 95 30" enable-background="new 0 0 95 30" xml:space="preserve">
+<switch>
+	<foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+		<i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+		</i:pgfRef>
+	</foreignObject>
+	<g i:extraneous="self">
+		<g>
+			<path d="M38.098,25.153C37.925,13.162,35.983,8,30.001,8s-7.924,5.162-8.097,17.153C18.92,22.769,17.001,19.106,17.001,15
+				c0-7.168,5.831-13,13-13c7.168,0,13,5.832,13,13C43.001,19.106,41.082,22.769,38.098,25.153 M29.982,19.989
+				c-6.017,0-5.127-7.311-5.127-7.311s1.027-2.315,5.127-2.315c4.101,0,5.17,2.315,5.17,2.315S35.997,19.989,29.982,19.989
+				 M30.001,0c-8.271,0-15,6.729-15,15c0,8.271,6.729,15,15,15s15-6.729,15-15C45.001,6.729,38.272,0,30.001,0"/>
+			<path d="M73.098,25.153C72.924,13.162,70.983,8,65,8c-5.981,0-7.924,5.162-8.097,17.153C53.92,22.769,52,19.106,52,15
+				c0-7.168,5.832-13,13-13s13,5.832,13,13C78,19.106,76.083,22.769,73.098,25.153 M64.982,19.989c-6.017,0-5.127-7.311-5.127-7.311
+				s1.026-2.315,5.127-2.315s5.17,2.315,5.17,2.315S70.997,19.989,64.982,19.989 M65,0C56.73,0,50,6.729,50,15
+				c0,8.271,6.729,15,15,15c8.271,0,15-6.729,15-15C80,6.729,73.272,0,65,0"/>
+			<polygon points="91,10 88.44,10 91.641,14 85,14 85,16 91.64,16 88.44,20 91,20 95,14.999 			"/>
+			<polygon points="4,10 0,15.001 4,20 6.562,20 3.361,16 10,16 10,14 3.362,14 6.562,10 			"/>
+		</g>
+	</g>
+</switch>
+</svg>

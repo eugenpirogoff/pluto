@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="65px" height="72.021px"
+	 viewBox="0 0 65 72.021" enable-background="new 0 0 65 72.021" xml:space="preserve">
+<switch>
+	<foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+		<i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+		</i:pgfRef>
+	</foreignObject>
+	<g i:extraneous="self">
+		<g>
+			<path d="M23.097,46.162C22.924,34.172,20.981,29.01,15,29.01c-5.982,0-7.925,5.162-8.097,17.152C3.919,43.78,2,40.117,2,36.01
+				c0-7.168,5.831-13,13-13c7.168,0,13,5.832,13,13C28,40.117,26.081,43.78,23.097,46.162 M14.981,40.999
+				c-6.018,0-5.127-7.31-5.127-7.31s1.026-2.316,5.127-2.316s5.17,2.316,5.17,2.316S20.995,40.999,14.981,40.999 M15,21.01
+				c-8.271,0-15,6.729-15,15c0,8.272,6.729,15,15,15s15-6.728,15-15C30,27.738,23.271,21.01,15,21.01"/>
+			<path d="M58.097,46.162C57.924,34.172,55.981,29.01,50,29.01c-5.982,0-7.925,5.162-8.097,17.152C38.919,43.78,37,40.117,37,36.01
+				c0-7.168,5.831-13,13-13c7.168,0,13,5.832,13,13C63,40.117,61.081,43.78,58.097,46.162 M49.981,40.999
+				c-6.018,0-5.127-7.31-5.127-7.31s1.026-2.316,5.127-2.316s5.17,2.316,5.17,2.316S55.995,40.999,49.981,40.999 M50,21.01
+				c-8.271,0-15,6.729-15,15c0,8.272,6.729,15,15,15s15-6.728,15-15C65,27.738,58.271,21.01,50,21.01"/>
+			<path d="M24.391,64.164l-2.089-1.645l0.146,5.286c-4.002-2.564-6.467-7.023-6.467-11.795h-2c0,5.347,2.704,10.354,7.12,13.309
+				l-4.986,1.059l2.087,1.643l6.366-1.35L24.391,64.164z"/>
+			<path d="M43.88,2.7l4.986-1.057L46.778,0l-6.365,1.35l0.178,6.506L42.679,9.5l-0.146-5.284c4.002,2.562,6.467,7.021,6.467,11.795
+				h2C50.999,10.663,48.296,5.654,43.88,2.7"/>
+		</g>
+	</g>
+</switch>
+</svg>

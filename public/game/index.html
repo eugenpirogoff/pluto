@@ -80,13 +80,16 @@
 				hudcontainer = document.getElementById("overlay");
 				container = document.getElementById("main");
 
+
 				hexGL = new bkcore.hexgl.HexGL({
 					document: document,
 					width: SCREEN_WIDTH,
 					height: SCREEN_HEIGHT,
 					container: container,
 					overlay: overlay,
-					quality: bkcore.Utils.getURLParameter('quality'),
+					// quality: bkcore.Utils.getURLParameter('quality'),
+					// Quality set to 1, i have only a MacBookAir ;-)
+					quality: 1,
 					difficulty: bkcore.Utils.getURLParameter('difficulty'),
 					half: bkcore.Utils.getURLParameter('half'),
 					track: 'Cityscape'
@@ -110,41 +113,38 @@
 			
 			init();
 
+// socket.io connect to current domain via ws
 io = io.connect(document.domain);
-var pluto_id = document.URL.split('/')[4];
 
-io.emit('pluto_join', pluto_id);
+// creating custom Event 
+plutoEvent = document.createEvent("Event");
+plutoEvent.initEvent("pluto_controller_event", true, true);
 
+// parsing the pluto_session_id out of the url
+var pluto_session_id = document.URL.split('/')[4];
+
+// join to current pluto_session with socket.io
+io.emit('pluto_join', pluto_session_id);
+
+// building default route for the pluto_relay event
+io.on('pluto_relay', function(data){
+	keys = data;
+});
+
+// emitter function  which is being called al 15 msec
 function pluto_event_emitter(data) {
-	var plutoEvent = document.createEvent("Event");
-	plutoEvent.initEvent("pluto", true, true);
 	plutoEvent['data'] = data;
 	document.dispatchEvent(plutoEvent);
 };
 
-keys = {
-	"controller_session" : "no_session",
-	"controller_id" : "no_id",
-	"message": "my message string",
-	"up" : false,
-	"down" : false,
-	"left" : false,
-	"right": false,
-	"a" : false, 
-	"b" : false
-}
+// empty JSON for the keystrokes
+keys = {};
 
+// execute pluto_event_emitter with the current keys on every 15 ms
+var interval = self.setInterval(function(){
+	pluto_event_emitter(keys);
+},15);
 
-io.on('pluto_relay', function(data){
-	//console.log("nothing happend");
-	console.log(data);
-	keys = data;
-	// $('.pluto_client_emitter').html(data['pluto_data'])
-})
-
-var int = self.setInterval(function(){pluto_event_emitter(keys)},50);
-
-
-		</script>
-	</body>
+</script>
+</body>
 </html>

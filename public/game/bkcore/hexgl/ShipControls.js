@@ -134,14 +134,6 @@ bkcore.hexgl.ShipControls = function(domElement)
 		}
 	};
 
-	function onPlutoEvent(event){
-		//console.log(event);
-		self.key.forward = event.data.up;
-		self.key.backward = event.data.down;
-		self.key.left = event.data.left;
-		self.key.right = event.data.right;
-	};
-
 	function onKeyUp(event) 
 	{
 		switch(event.keyCode) 
@@ -162,9 +154,19 @@ bkcore.hexgl.ShipControls = function(domElement)
 		}
 	};
 
+	function onPlutoEvent(event)
+	{
+		self.key.forward = event.data.up;
+		self.key.backward = event.data.down;
+		self.key.left = event.data.left;
+		self.key.right = event.data.right;
+		self.key.ltrigger = event.data.a;
+		self.key.rtrigger = event.data.b;
+	};
+
 	domElement.addEventListener('keydown', onKeyDown, false);
 	domElement.addEventListener('keyup', onKeyUp, false);
-	domElement.addEventListener('pluto', onPlutoEvent, false)
+	domElement.addEventListener('pluto_controller_event', onPlutoEvent, false)
 };
 
 bkcore.hexgl.ShipControls.prototype.control = function(threeMesh)

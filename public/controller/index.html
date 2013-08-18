@@ -1,90 +1,16 @@
 <html>
 <head>
 	<title>Pluto:Controller</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<script src="/controller/js/script.js"></script>
-
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-
 <script src="/socket.io/socket.io.js"></script>
-<script>
-io = io.connect(document.domain)
-var pluto_id = document.URL.split('/')[4];
-// var pluto_connected = true;
-
-var pluto_data = {
-        	"controller_session" : pluto_id,
-			"controller_id" : null,
-			"message": "message",
-			"up" : false,
-			"down" : false,
-			"left" : false,
-			"right": false,
-			"a" : false, 
-			"b" : false
-        }
-
-var pluto_loop = function(data){
-		io.emit('pluto_data', pluto_data)
-}
-
-function set_pluto_data(id, value){
-	pluto_data[id] = value;
-}
-
-$(document).ready(function(){
-	up = document.getElementById("up");
-	down = document.getElementById("down");
-	left = document.getElementById("left");
-	right = document.getElementById("right");
-	a = document.getElementById("a");
-	b = document.getElementById("b");
-
-
-	// To-Do All the Other Buttons
-	up.addEventListener("touchstart", function() { set_pluto_data('up',true)});
-	up.addEventListener("touchend", function() {set_pluto_data('up', false)});
-	
-	down.addEventListener("touchstart", function() { set_pluto_data('down',true)});
-	down.addEventListener("touchend", function() {set_pluto_data('down', false)});
-
-	left.addEventListener("touchstart", function() { set_pluto_data('left',true)});
-	left.addEventListener("touchend", function() {set_pluto_data('left', false)});
-
-	right.addEventListener("touchstart", function() { set_pluto_data('right',true)});
-	right.addEventListener("touchend", function() {set_pluto_data('right', false)});
-
-	a.addEventListener("touchstart", function() { set_pluto_data('a',true)});
-	a.addEventListener("touchend", function() {set_pluto_data('a', false)});
-
-	b.addEventListener("touchstart", function() { set_pluto_data('b',true)});
-	b.addEventListener("touchend", function() {set_pluto_data('b', false)});
-
-	// To-Do add all the other Listeners and Touch-Types like 'touchcancel' etc.
-
-	// set up sending loop
-	var interval = self.setInterval(function(){pluto_loop(pluto_data)},25);
-	// To-Do .... tweak sending interval
-
-});
-
-</script>
+<script src="js/virtualjoystick/virtualjoystick.js"></script>
+<script src="/controller/js/script.js"></script>
+<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-<div class="wrapper">
-	<div class="pluto_left">
-		<button class="pluto_client_cursor" id="up">UP</button>
-		<button class="pluto_client_cursor" id="down">DOWN</button>
-		<button class="pluto_client_cursor" id="left">LEFT</button>
-		<button class="pluto_client_cursor" id="right">RIGHT</button>
-	</div>
-	<div class="pluto_right">
-		<button class="pluto_client_fire" id="a">A</button>
-		<button class="pluto_client_fire" id="b">B</button>
-	</div>
-</div>
-
+	<div id="led"></div>
+	<img id="pluto_icon_left" type="image/svg+xml" src="img/omnidirectional_drag.svg" width="128" height="128" border="0"/>
+	<img id="pluto_icon_right" type="image/svg+xml" src="img/horizontal_flick.svg" width="128" height="128" border="0" />
 </body>
 </html>

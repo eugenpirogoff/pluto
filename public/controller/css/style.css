@@ -1,87 +1,27 @@
-body {
-	background-color: lightgrey;
-}
-
-button {
+#led {
 	position: absolute;
-	width: 80px;
-	height: 80px;
-	border: 3px;
-	outline-color: black;
-	margin: 0px;
-	padding: 0px;
-	border: 5px solid #dedede;
-    -webkit-border-radius: 40px;
-    -moz-border-radius: 40px;
-    border-radius: 40px;
-    font-size: 10;
-    font-weight: bold;
+	width: 16px;
+	height: 6px;
+	border: 9px solid #e6e6e6;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	font-size: 20;
+	margin: 10px;
+	background-color: #05f75e;
+	left: 1px;
+	top: 1px;
+	z-index: 999999;
 }
 
-.pluto_client_cursor {
-	background-color: lightgreen;
+#pluto_icon_left {
+	position: absolute;
+	left: 80px;
+	bottom: 80px;
 }
 
-.pluto_client_fire {
-	background-color: lightblue;
-}
-
-.pluto_client_select {
-	width: 100px;
-	height: 40px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-}
-
-button#up {
-	margin-left: 80px;
-}
-
-button#down {
-	margin-left: 80px;
-	margin-top: 160px;
-}
-
-button#right {
-	margin-top: 80px;
-	margin-left: 160px;
-}
-button#left {
-	margin-top: 80px;
-}
-
-button#a {
-	margin-top: 160px;
-}
-
-button#b {
-	margin-top: 160px;
-	margin-left: 160px;
-}
-
-
-div.pluto_left {
-	width: 240px;
-	height: 240px;
-	float: left;
-	margin-top: 50px;
-}
-
-div.pluto_right {
-	width: 240px;
-	height: 240px;
-	float: right;
-	margin-top: -20px;
-}
-
-div.wrapper {
-	overflow: auto;
-}
-
-div.log {
-	width: 100px;
-	height: 100px;
-	margin-right: auto;
-	margin-left: auto;
+#pluto_icon_right {
+	position: absolute;
+	right: 80px;
+	bottom: 80px;
 }

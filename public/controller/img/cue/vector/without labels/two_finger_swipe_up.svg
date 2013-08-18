@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="58px" height="45px"
+	 viewBox="0 0 58 45" enable-background="new 0 0 58 45" xml:space="preserve">
+<switch>
+	<foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+		<i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+		</i:pgfRef>
+	</foreignObject>
+	<g i:extraneous="self">
+		<g>
+			<polygon points="24,4 24,6.562 28,3.36 28,10 30,10 30,3.361 34,6.562 34,4 28.998,0 			"/>
+			<g>
+				<path d="M14.98,34.989c-6.018,0-5.127-7.31-5.127-7.31s1.027-2.315,5.127-2.315c4.102,0,5.17,2.315,5.17,2.315
+					S20.996,34.989,14.98,34.989 M15,23c-6.285,0-8.115,5.679-8.115,19.004v0.6C9.227,44.114,12.006,45,15,45
+					c2.992,0,5.771-0.887,8.113-2.396v-0.6C23.113,28.679,21.283,23,15,23"/>
+				<path d="M43,15c-6.387,0-11.842,4.021-14,9.659C26.842,19.021,21.389,15,15,15C6.729,15,0,21.729,0,30c0,0.552,0.447,1,1,1
+					c0.551,0,1-0.448,1-1c0-7.169,5.832-13,13-13s13,5.831,13,12.999V30c0,0.552,0.447,1,1,1c0.551,0,1-0.448,1-1
+					c0-7.169,5.832-13,13-13s13,5.831,13,12.999c0,0.552,0.447,1,1,1c0.551,0,1-0.448,1-1C58,21.729,51.27,15,43,15"/>
+				<path d="M42.98,34.989c-6.018,0-5.127-7.31-5.127-7.31s1.027-2.315,5.127-2.315c4.102,0,5.17,2.315,5.17,2.315
+					S48.996,34.989,42.98,34.989 M43,23c-6.285,0-8.115,5.679-8.115,19.004v0.6C37.227,44.114,40.006,45,43,45
+					c2.992,0,5.771-0.887,8.113-2.396v-0.6C51.113,28.679,49.283,23,43,23"/>
+			</g>
+		</g>
+	</g>
+</switch>
+</svg>
