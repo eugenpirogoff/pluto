@@ -1,3 +1,10 @@
+body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+   	margin: 0;
+}
+
 #led {
 	position: absolute;
 	width: 16px;
@@ -16,12 +23,12 @@
 
 #pluto_icon_left {
 	position: absolute;
-	left: 80px;
-	bottom: 80px;
+	left: 20px;
+	bottom: 20px;
 }
 
 #pluto_icon_right {
 	position: absolute;
-	right: 80px;
-	bottom: 80px;
+	right: 20px;
+	bottom: 20px;
 }
