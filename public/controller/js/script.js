@@ -77,8 +77,8 @@ $(document).ready(function(){
 
 
 	setTimeout(function(){
-		$("#pluto_icon_left").fadeTo(1500, 0.3).fadeTo(1500,1).fadeTo(1500,0.3).fadeTo(1500,0.7).fadeTo(2500,0);
-		$("#pluto_icon_right").fadeTo(1500, 0.3).fadeTo(1500,1).fadeTo(1500,0.3).fadeTo(1500,0.7).fadeTo(2500,0);
+		$("#pluto_icon_left").fadeTo(1500, 0.2).fadeTo(1500,1).fadeTo(1500,0.2).fadeTo(1500,0.9).fadeTo(2500,0);
+		$("#pluto_icon_right").fadeTo(1500, 0.2).fadeTo(1500,1).fadeTo(1500,0.2).fadeTo(1500,0.9).fadeTo(2500,0);
 	},1000);
 
 	setTimeout(function(){
