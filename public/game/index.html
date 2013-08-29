@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="css/fonts.css" type="text/css" charset="utf-8">
-		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 
 		<style>
 			body {
@@ -27,10 +27,30 @@
 				left: 0;
 				width: 100%;
 			}
+
+			#pluto_display {
+				position: absolute;
+				width: 70px;
+				height:15px;
+				border: 2px solid #e6e6e6;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				font-family: Arial;
+				font-size: small;
+				margin: 8px;
+				color: black;
+				background-color: lightgrey;
+				left: 1px;
+				top: 1px;
+				padding: 3px;
+				z-index: 999999;
+			}
 		</style>
 	</head>
 
 	<body>
+		<div id="pluto_display">Connection</div>
 		<div id="overlay"></div>
 		<div id="main"></div>
 
@@ -65,7 +85,9 @@
 		<script src="bkcore/hexgl/HexGL.js"></script>
 
 
+		<!--Socket.io and PeerJS import-->
 		<script src="/socket.io/socket.io.js"></script>
+		<script src="http://cdn.peerjs.com/0/peer.min.js"></script>
 
 		<script>
 
@@ -88,8 +110,8 @@
 					container: container,
 					overlay: overlay,
 					// quality: bkcore.Utils.getURLParameter('quality'),
-					// Quality set to 1, i have only a MacBookAir ;-)
-					quality: 1,
+					// Quality set to 2, i have only a MacBookAir ;-)
+					quality: 2,
 					difficulty: bkcore.Utils.getURLParameter('difficulty'),
 					half: bkcore.Utils.getURLParameter('half'),
 					track: 'Cityscape'
@@ -110,40 +132,62 @@
 					}
 				});
 			}
-			
+
 			init();
 
-// socket.io connect to current domain via ws
-io = io.connect(document.domain);
+//
+// Pluto Init
+//
 
-// creating custom Event 
+// creating custom Event for HexGL
 plutoEvent = document.createEvent("Event");
 plutoEvent.initEvent("pluto_controller_event", true, true);
 
 // parsing the pluto_session_id out of the url
-var pluto_session_id = document.URL.split('/')[4];
+var pluto_id = document.URL.split('/')[4];
 
-// join to current pluto_session with socket.io
-io.emit('pluto_join', pluto_session_id);
 
-// building default route for the pluto_relay event
-io.on('pluto_relay', function(data){
-	keys = data;
-});
-
-// emitter function  which is being called al 15 msec
+// Event Emitter function  which is being called every 16 msec
 function pluto_event_emitter(data) {
+	pluto_display = document.getElementById("pluto_display");
+	pluto_display.innerHTML = data["connection_type"];
 	plutoEvent['data'] = data;
 	document.dispatchEvent(plutoEvent);
 };
 
-// empty JSON for the keystrokes
-keys = {};
+//
+// Socket.io Communication
+//
+// ID naming convention
+// Pluto Controller/Host Room = Pluto Session ID
+//
 
-// execute pluto_event_emitter with the current keys on every 15 ms
-var interval = self.setInterval(function(){
-	pluto_event_emitter(keys);
-},15);
+// socket.io connect to current domain via ws
+io = io.connect(document.domain);
+
+//join to current pluto_session with socket.io
+io.emit('pluto_join', pluto_id);
+
+// building default route for the pluto_relay event
+io.on('pluto_relay', function(data){
+	pluto_event_emitter(data);
+});
+
+//
+// PeerJS Communication
+// PeerJS API Key => "8muaf9c1vm7mygb9", 50 concurrent connections max
+//
+// ID naming convention
+// Pluto Controller ID = 'controller' + Pluto Session ID
+// Pluto Host ID = 'host' + Pluto Session ID
+//
+var peer = new Peer('host'+pluto_id, {key: '8muaf9c1vm7mygb9'});
+
+peer.on('connection', function(connection){
+	connection.on('data', function(data){
+		pluto_event_emitter(data);
+	});
+});
 
 </script>
 </body>

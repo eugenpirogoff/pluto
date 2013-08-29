@@ -5,21 +5,33 @@ body {
    	margin: 0;
 }
 
-#led {
+#pluto_led {
 	position: absolute;
 	width: 16px;
 	height: 6px;
-	border: 9px solid #e6e6e6;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
+	border: 6px solid #e6e6e6;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 	font-size: 20;
-	margin: 10px;
-	background-color: #05f75e;
+	margin: 8px;
+	background-color: red;
 	left: 1px;
 	top: 1px;
 	z-index: 999999;
 }
+
+
+#pluto_connection_type {
+	position: absolute;
+	font-size: small;
+	font-family: Arial;
+	color: grey;
+	left: 45px;
+	top: 10px;
+	z-index: 999999;
+}
+
 
 #pluto_icon_left {
 	position: absolute;

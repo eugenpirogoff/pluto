@@ -1,48 +1,75 @@
-// inital key data as a json hash
+/**
+* Pluto - WebSocket Remote for Node.js
+* Eugen Pirogoff
+* web: http://www.eugenpirogoff.de
+* mail: eugenpirogoff@me.com
+**/
+
+// Pluto default Connection Type = WebRTC
+var pluto_connection_type = "WebRTC";
+
+// Set Puto Session ID from URL
+var pluto_id = document.URL.split('/')[4];
+
+// Pluto Key Data as JSON
 var pluto_key_data = {
 	"controller_session" : pluto_id,
 	"controller_id" : 1,
-	"message": "message",
+	"connection_type": pluto_connection_type,
 	"up" : false,
 	"down" : false,
 	"left" : false,
 	"right": false,
-	"a" : false, 
+	"a" : false,
 	"b" : false
 }
 
+// Prompt for Pluto Session ID
 function pluto_ask_for_session(event) {
 	event.preventDefault();
-	pluto_key_data["controller_session"] = prompt("Your Session ID ?")
+	io.emit('pluto_leave',pluto_key_data["controller_session"]);
+	pluto_key_data["controller_session"] = prompt("Your Session ID ?");
+	io.emit('pluto_join', pluto_key_data["controller_session"]);
 }
 
-// check for pluto id in the URL 
-var pluto_id = document.URL.split('/')[4];
-// need refactoring, check if its really an session id
+//
+// Socket.io Communication
+//
+// ID naming convention
+// Pluto Controller/Host Room = Pluto Session ID
+//
 
-
-// connect to local domain via websocekts
+// Connecting to actual Domain with WebSocket
 io = io.connect(document.domain)
 
+//
+// PeerJS Communication
+// PeerJS API Key => "8muaf9c1vm7mygb9", 50 concurrent connections max
+//
+// ID naming convention
+// Pluto Controller ID = 'controller' + Pluto Session ID
+// Pluto Host ID = 'host' + Pluto Session ID
+//
 
-// TO-DO : joind backchannel communcation for message receive on backend and client
+// Creating WebRTC peer and connection to Pluto Game via PeerJS Peering Server
+var peer = new Peer("controller"+pluto_id, {key: '8muaf9c1vm7mygb9'});
+var connection = peer.connect("host"+pluto_id);
+
+setInterval(function() {
+	// Checking for WebRTC or falling back WebSocket
+	if (connection.isOpen() == true) {
+		pluto_connection_type = "WebRTC";
+	}
+	else if (connection.isOpen() == false) {
+	 	pluto_connection_type = "WebSocket";
+	}
+}, 1000);
+
 
 $(document).ready(function(){
-
-	// function for emitting data into the session, no room join needed
-	var pluto_loop = function(){
-			pluto_key_data["up"] = joystick_left.up();
-			pluto_key_data["a"] = joystick_left.left();
-			pluto_key_data["b"] = joystick_left.right();
-			pluto_key_data["down"] = joystick_left.down();
-			pluto_key_data["left"] = joystick_right.left();
-			pluto_key_data["right"] = joystick_right.right();
-			io.emit('pluto_data', pluto_key_data)
-	}
-
-
-	// touchscreen available ?
-	console.log("touchscreen is", VirtualJoystick.touchScreenAvailable() ? "available" : "not available");
+//
+// Joystick Library Control-SetUp
+//
 
 	// right joystick init and add Listener
 	var joystick_right	= new VirtualJoystick({
@@ -67,15 +94,69 @@ $(document).ready(function(){
 			return true
 		});
 
-	// setting up emitter loop every 1 ms
-	var interval = self.setInterval(function(){pluto_loop()},1);
+	// setting up emitter loop every 16 ms
+	// 16 ms = 1 sec / (60 Frames are a smooth refresh rate)
+	setInterval(function(){pluto_loop()},16);
 
-	//LED Session Promt
-	var led = document.getElementById("led").addEventListener(
+	//LED Session Promt (Professional User only ;-) )
+	var led = document.getElementById("pluto_led").addEventListener(
 		'touchstart', pluto_ask_for_session, false
 	);
 
 
+//
+// Pluto Event Emitter Loop
+//
+
+	var pluto_loop = function(){
+		// Left Joystick
+		pluto_key_data["up"] = joystick_left.up();
+		pluto_key_data["down"] = joystick_left.down();
+
+		// Right Joystick
+		// pluto_key_data["left"] = joystick_right.left(); // primary steering
+		// pluto_key_data["right"] = joystick_right.right(); // primary steering
+		pluto_key_data["a"] = joystick_right.left(); // secondary softsteering
+		pluto_key_data["b"] = joystick_right.right(); // secondary softsteering
+
+		// Setting connection Type in JSON
+    	pluto_key_data["connection_type"] = pluto_connection_type;
+
+		switch (pluto_connection_type) {
+    		case "WebSocket":
+				io.emit('pluto_data', pluto_key_data);
+        		break;
+		    case "WebRTC":
+		    	if (connection.isOpen){
+					connection.send(pluto_key_data);
+			    }
+			    break;
+		}
+	}
+
+
+//
+// Pluto Connection Status
+//
+setInterval(function(){
+	$("#pluto_connection_type").html(pluto_connection_type);
+	switch (pluto_connection_type) {
+		case "WebSocket":
+			$("#pluto_led").css( "background-color", "orange" );
+    		break;
+	    case "WebRTC":
+	    	$("#pluto_led").css( "background-color", "lightgreen" );
+	        break;
+        default:
+        	$("#pluto_led").css( "background-color", "red" );
+        	break;
+	}
+},1000);
+
+
+//
+// Pictogramm fading and removing with jQuery
+//
 	setTimeout(function(){
 		$("#pluto_icon_left").fadeTo(1500, 0.2).fadeTo(1500,1).fadeTo(1500,0.2).fadeTo(1500,0.9).fadeTo(2500,0);
 		$("#pluto_icon_right").fadeTo(1500, 0.2).fadeTo(1500,1).fadeTo(1500,0.2).fadeTo(1500,0.9).fadeTo(2500,0);
@@ -85,4 +166,5 @@ $(document).ready(function(){
 		$("#pluto_icon_left").remove();
 		$("#pluto_icon_right").remove();
 	}, 10000);
+
 });

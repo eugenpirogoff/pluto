@@ -8,20 +8,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />	
 <link rel="apple-touch-icon" sizes="144x144" href="img/Icon-72@2x.png">
 <link rel="apple-touch-icon-precomposed" href="img/Icon-72@2x.png"/>
-
-
-
 <html manifest="./cache.manifest">
-
-
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://cdn.peerjs.com/0/peer.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/virtualjoystick/virtualjoystick.js"></script>
 <script src="/controller/js/script.js"></script>
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-	<div id="led"></div>
+	<div id="pluto_led"></div>
+	<div id="pluto_connection_type">No Connection</div>
 	<img id="pluto_icon_left" type="image/svg+xml" src="img/omnidirectional_drag.png" width="128" height="128" border="0"/>
 	<img id="pluto_icon_right" type="image/svg+xml" src="img/horizontal_flick.png" width="128" height="128" border="0" />
 </body>
