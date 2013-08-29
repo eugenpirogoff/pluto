@@ -50,21 +50,32 @@ io = io.connect(document.domain)
 // Pluto Controller ID = 'controller' + Pluto Session ID
 // Pluto Host ID = 'host' + Pluto Session ID
 //
+var this_is_Chrome = /Chrome/.test(navigator.userAgent) || /Google/.test(navigator.vendor);
+var pluto_send_webrtc = function(){};
 
-// Creating WebRTC peer and connection to Pluto Game via PeerJS Peering Server
-var peer = new Peer("controller"+pluto_id, {key: '8muaf9c1vm7mygb9'});
-var connection = peer.connect("host"+pluto_id);
+try {
+	var peer = new Peer("controller"+pluto_id, {key: '8muaf9c1vm7mygb9'});
+	var connection = peer.connect("host"+pluto_id);
+}catch(e){
+	console.log("Pluto WebSocket Error");
+}
+
 
 setInterval(function() {
-	// Checking for WebRTC or falling back WebSocket
-	if (connection.isOpen() == true) {
+	if (this_is_Chrome ) {
 		pluto_connection_type = "WebRTC";
 	}
-	else if (connection.isOpen() == false) {
+	else {
 	 	pluto_connection_type = "WebSocket";
 	}
 }, 1000);
 
+
+setTimeout(function(){
+	pluto_send_webrtc = function(data){
+		connection.send(data);
+	};
+}, 3000);
 
 $(document).ready(function(){
 //
@@ -127,9 +138,8 @@ $(document).ready(function(){
 				io.emit('pluto_data', pluto_key_data);
         		break;
 		    case "WebRTC":
-		    	if (connection.isOpen){
-					connection.send(pluto_key_data);
-			    }
+		    	pluto_send_webrtc(pluto_key_data);
+				//connection.send(pluto_key_data);
 			    break;
 		}
 	}
@@ -166,5 +176,10 @@ setInterval(function(){
 		$("#pluto_icon_left").remove();
 		$("#pluto_icon_right").remove();
 	}, 10000);
+
+// window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
+//     console.log("Error occured: " + errorMsg);
+//     return false;
+// }
 
 });

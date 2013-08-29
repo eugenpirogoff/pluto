@@ -31,15 +31,14 @@ app.get('/game/:pluto_pin', function(req, res){
 
 app.get('/controller/:pluto_pin', function(req, res){
 	// if (sessions[req.params.pluto_pin] == false){
-		sessions[req.params.pluto_pin] = true;
 		console.log("Pluto Controller Request :" + req.params.pluto_pin)
 		res.sendfile(__dirname + '/public/controller/index.html')
+		sessions[req.params.pluto_pin] = true;
 	// }
 	// else {
 	// 	res.send("There is no Pluto Game Session running with that ID");
 	// 	// res.sendfile(__dirname + '/public/controller/404.html')
 	// }
-
 });
 
 app.io.route('pluto_data', function(req){
