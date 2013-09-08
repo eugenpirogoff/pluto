@@ -45,14 +45,15 @@ io = io.connect(document.domain)
 var this_is_Chrome = /Chrome/.test(navigator.userAgent)
 var pluto_send_webrtc = function(){};
 
+// try to connect via WebRTC 
 try {
 	var peer = new Peer("controller"+pluto_id, {key: '8muaf9c1vm7mygb9'});
 	var connection = peer.connect("host"+pluto_id);
 }catch(e){
-	console.log("Pluto WebSocket Error");
+	console.log("Pluto WebRTC Error");
 }
 
-
+// Checking if Chrome for WebRTC otherwise WebSocket
 setInterval(function() {
 	if (this_is_Chrome) {
 		pluto_connection_type = "WebRTC";
@@ -62,7 +63,7 @@ setInterval(function() {
 	}
 }, 1000);
 
-
+// adding sending function for WebRTC
 setTimeout(function(){
 	pluto_send_webrtc = function(data){
 		connection.send(data);
@@ -111,10 +112,10 @@ $(document).ready(function(){
 		pluto_key_data["down"] = joystick_left.down();
 
 		// Right Joystick
-		// pluto_key_data["left"] = joystick_right.left(); // primary steering
-		// pluto_key_data["right"] = joystick_right.right(); // primary steering
-		pluto_key_data["a"] = joystick_right.left(); // secondary softsteering
-		pluto_key_data["b"] = joystick_right.right(); // secondary softsteering
+		// pluto_key_data["left"] = joystick_right.left(); // primary harder steering
+		// pluto_key_data["right"] = joystick_right.right(); // primary harder steering
+		pluto_key_data["a"] = joystick_right.left(); // secondary softer steering
+		pluto_key_data["b"] = joystick_right.right(); // secondary softer steering
 
 		// Setting connection Type in JSON
     	pluto_key_data["connection_type"] = pluto_connection_type;
@@ -162,10 +163,5 @@ setInterval(function(){
 		$("#pluto_icon_left").remove();
 		$("#pluto_icon_right").remove();
 	}, 10000);
-
-// window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
-//     console.log("Error occured: " + errorMsg);
-//     return false;
-// }
 
 });

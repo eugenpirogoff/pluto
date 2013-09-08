@@ -38,7 +38,7 @@ app.get('/controller/:pluto_pin', function(req, res){
 		sessions[req.params.pluto_pin] = true;
 	}
 	else {
-		res.send("There is no Pluto Game Session running with that ID");
+		res.send("There is no Pluto Game Session running with that WebSocket-ID : " + req.params.pluto_pin);
 	}
 });
 
@@ -50,19 +50,19 @@ app.io.route('pluto_data', function(req){
 	}
 })
 
-// pluto connection joins
+// pluto connection joins socket.io
 app.io.route('pluto_join', function(req){
 	req.io.join(req.data);
 })
 
-// pluto is leaving
+// pluto is leaving socket.io
 app.io.route('pluto_leave', function(rea){
 	req.io.leave(req.data);
 })
 
-// log current sessions on server
+// log current websocket sessions on server
 setInterval(function(){
 	console.log("Pluto: concurrent WebSocket connections : " + Object.keys(sessions).length);
-},3000);
+},5000);
 
 app.listen(process.env.VCAP_APP_PORT || 3000);
