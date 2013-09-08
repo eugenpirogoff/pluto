@@ -8,7 +8,7 @@
 // Pluto default Connection Type = WebRTC
 var pluto_connection_type = "WebRTC";
 
-// Set Puto Session ID from URL
+// Set Puto Session ID from url
 var pluto_id = document.URL.split('/')[4];
 
 // Pluto Key Data as JSON
@@ -22,14 +22,6 @@ var pluto_key_data = {
 	"right": false,
 	"a" : false,
 	"b" : false
-}
-
-// Prompt for Pluto Session ID
-function pluto_ask_for_session(event) {
-	event.preventDefault();
-	io.emit('pluto_leave',pluto_key_data["controller_session"]);
-	pluto_key_data["controller_session"] = prompt("Your Session ID ?");
-	io.emit('pluto_join', pluto_key_data["controller_session"]);
 }
 
 //
@@ -50,7 +42,7 @@ io = io.connect(document.domain)
 // Pluto Controller ID = 'controller' + Pluto Session ID
 // Pluto Host ID = 'host' + Pluto Session ID
 //
-var this_is_Chrome = /Chrome/.test(navigator.userAgent) || /Google/.test(navigator.vendor);
+var this_is_Chrome = /Chrome/.test(navigator.userAgent)
 var pluto_send_webrtc = function(){};
 
 try {
@@ -62,7 +54,7 @@ try {
 
 
 setInterval(function() {
-	if (this_is_Chrome ) {
+	if (this_is_Chrome) {
 		pluto_connection_type = "WebRTC";
 	}
 	else {
@@ -109,16 +101,10 @@ $(document).ready(function(){
 	// 16 ms = 1 sec / (60 Frames are a smooth refresh rate)
 	setInterval(function(){pluto_loop()},16);
 
-	//LED Session Promt (Professional User only ;-) )
-	var led = document.getElementById("pluto_led").addEventListener(
-		'touchstart', pluto_ask_for_session, false
-	);
-
 
 //
 // Pluto Event Emitter Loop
 //
-
 	var pluto_loop = function(){
 		// Left Joystick
 		pluto_key_data["up"] = joystick_left.up();

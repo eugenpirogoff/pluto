@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>HexGL dev page</title>
+		<title>Pluto: Game  - HexGL</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="css/fonts.css" type="text/css" charset="utf-8">
-		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    	<script src="../components/jquery/jquery.js"></script>
 
 		<style>
 			body {
@@ -17,9 +17,16 @@
 				text-align:center;
 				color: #666;
 			}
-			h1 {color: #666	; }
-			a { color:skyblue }
-			canvas { pointer-events:none; }
+			h1 {
+				color: #666	;
+			}
+			a {
+				color:skyblue;
+			}
+			canvas {
+				pointer-events:none;
+			}
+
 			#overlay{
 				position: absolute;
 				z-index: 9999;
@@ -46,10 +53,22 @@
 				padding: 3px;
 				z-index: 999999;
 			}
+
+			#pluto_waiting{
+			    position:absolute;
+			    left:50%;
+			    top:50%;
+				width: 400px;
+				height: 400px;
+			    margin:-200px 0 0 -200px;
+				background-image:url('/game/img/waiting.png');
+				z-index: -999999;
+			}
 		</style>
 	</head>
 
 	<body>
+		<div id="pluto_waiting"></div>
 		<div id="pluto_display">Connection</div>
 		<div id="overlay"></div>
 		<div id="main"></div>
@@ -90,7 +109,6 @@
 		<script src="http://cdn.peerjs.com/0/peer.min.js"></script>
 
 		<script>
-
 			var SCREEN_WIDTH = window.innerWidth;
 			var SCREEN_HEIGHT = window.innerHeight;
 
@@ -133,8 +151,6 @@
 				});
 			}
 
-			init();
-
 //
 // Pluto Init
 //
@@ -142,13 +158,23 @@
 // creating custom Event for HexGL
 plutoEvent = document.createEvent("Event");
 plutoEvent.initEvent("pluto_controller_event", true, true);
+plutoconnected = false;
 
 // parsing the pluto_session_id out of the url
 var pluto_id = document.URL.split('/')[4];
 
+//Start Game after a remote connects
+var startGame = function(){
+		init();
+		plutoconnected = true;
+}
 
 // Event Emitter function  which is being called every 16 msec
+// and starts the game if the connection is new
 function pluto_event_emitter(data) {
+	if(plutoconnected == false){
+		startGame();
+	}
 	pluto_display = document.getElementById("pluto_display");
 	pluto_display.innerHTML = data["connection_type"];
 	plutoEvent['data'] = data;
@@ -182,12 +208,13 @@ io.on('pluto_relay', function(data){
 // Pluto Host ID = 'host' + Pluto Session ID
 //
 var peer = new Peer('host'+pluto_id, {key: '8muaf9c1vm7mygb9'});
-
 peer.on('connection', function(connection){
 	connection.on('data', function(data){
 		pluto_event_emitter(data);
 	});
 });
+
+
 
 </script>
 </body>

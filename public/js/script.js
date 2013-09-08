@@ -1,3 +1,10 @@
+/**
+* Pluto - WebSocket Remote for Node.js
+* Eugen Pirogoff
+* web: http://www.eugenpirogoff.de
+* mail: eugenpirogoff@me.com
+**/
+
 $(document).ready(function() {
     console.log( "Script Loaded" );
     var pluto_id = Math.round(new Date().getTime()/100000.0);

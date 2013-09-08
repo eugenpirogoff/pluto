@@ -1,0 +1,30 @@
+{
+  "name": "pluto",
+  "version": "0.0.1",
+  "main": "public/css/style.css",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "peerjs": "~0.2.5",
+    "bootstrap": "~3.0.0",
+    "components-font-awesome": "~3.2.1"
+  },
+  "homepage": "https://github.com/eugenpirogoff/pluto",
+  "authors": [
+    "Eugen Pirogoff <eugenpirogoff@me.com>"
+  ],
+  "description": "Node.JS Remot Controller with WebSockets and WebRTC",
+  "keywords": [
+    "none"
+  ],
+  "license": "MIT",
+  "private": true
+}

@@ -1,7 +1,7 @@
 {
   "name": "pluto",
   "description": "websocket remote controller for node",
-  "version": "0.0.1-25",
+  "version": "0.0.1-26",
   "author": {
     "name": "Eugen Pirogoff",
     "email": "eugenpirogoff@me.com",
@@ -28,6 +28,7 @@
   "bundleDependencies": [],
   "private": true,
   "scripts": {
+    "postdeploy": "bower install",
     "start": "node server.js"
   },
   "main": "server.js"
