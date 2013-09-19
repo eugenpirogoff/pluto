@@ -201,13 +201,13 @@ io.on('pluto_relay', function(data){
 
 //
 // PeerJS Communication
-// PeerJS API Key => "8muaf9c1vm7mygb9", 50 concurrent connections max
+// PeerJS API Key => "fcdc4q2kljcq5mi", 50 concurrent connections max
 //
 // ID naming convention
 // Pluto Controller ID = 'controller' + Pluto Session ID
 // Pluto Host ID = 'host' + Pluto Session ID
 //
-var peer = new Peer('host'+pluto_id, {key: '8muaf9c1vm7mygb9'});
+var peer = new Peer('host'+pluto_id, {key: 'fcdc4q2kljcq5mi'});
 peer.on('connection', function(connection){
 	connection.on('data', function(data){
 		pluto_event_emitter(data);

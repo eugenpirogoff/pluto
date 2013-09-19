@@ -56,7 +56,7 @@ app.io.route('pluto_join', function(req){
 })
 
 // pluto is leaving socket.io
-app.io.route('pluto_leave', function(rea){
+app.io.route('pluto_leave', function(req){
 	req.io.leave(req.data);
 })
 

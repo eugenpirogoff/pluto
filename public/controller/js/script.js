@@ -36,7 +36,7 @@ io = io.connect(document.domain)
 
 //
 // PeerJS Communication
-// PeerJS API Key => "8muaf9c1vm7mygb9", 50 concurrent connections max
+// PeerJS API Key => "fcdc4q2kljcq5mi", 50 concurrent connections max
 //
 // ID naming convention
 // Pluto Controller ID = 'controller' + Pluto Session ID
@@ -47,7 +47,7 @@ var pluto_send_webrtc = function(){};
 
 // try to connect via WebRTC 
 try {
-	var peer = new Peer("controller"+pluto_id, {key: '8muaf9c1vm7mygb9'});
+	var peer = new Peer("controller"+pluto_id, {key: 'fcdc4q2kljcq5mi'});
 	var connection = peer.connect("host"+pluto_id);
 }catch(e){
 	console.log("Pluto WebRTC Error");
