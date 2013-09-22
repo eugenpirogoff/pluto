@@ -33,19 +33,17 @@ app.get('/game/:pluto_pin', function(req, res){
 // router for pluto controller and the assigned pin
 app.get('/controller/:pluto_pin', function(req, res){
 	if (sessions[req.params.pluto_pin] == false){
-		console.log("Pluto Controller Request :" + req.params.pluto_pin)
 		res.sendfile(__dirname + '/public/controller/index.html')
 		sessions[req.params.pluto_pin] = true;
 	}
 	else {
-		res.send("There is no Pluto Game Session running with that WebSocket-ID : " + req.params.pluto_pin);
+		res.send("there is no game awaiting conntection to that controller : " + req.params.pluto_pin);
 	}
 });
 
-// listenening for pluto_data event on socket.io
+// listenening for pluto_data event on socket.io and routing the data to the session
 app.io.route('pluto_data', function(req){
 	if (sessions[req.data['controller_session']] == true){
-		req.io.join(req.data['controller_session']);
 		req.io.room(req.data['controller_session']).broadcast('pluto_relay', req.data);
 	}
 })
