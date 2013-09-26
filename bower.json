@@ -7,7 +7,7 @@
     "**/*.txt",
     "**/.*",
     "node_modules",
-    "bower_components",
+    "public/components",
     "test",
     "tests"
   ],
