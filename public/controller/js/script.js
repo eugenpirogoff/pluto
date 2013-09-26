@@ -11,7 +11,7 @@ var pluto_connection_type = "WebRTC";
 // Set Puto Session ID from url
 var pluto_id = document.URL.split('/')[4];
 
-// Pluto Key Data as JSON
+// pluto_key_data as JSON
 var pluto_key_data = {
 	"controller_session" : pluto_id,
 	"controller_id" : 1,
@@ -66,7 +66,7 @@ setInterval(function() {
 // adding sending function for WebRTC
 setTimeout(function(){
 	pluto_send_webrtc = function(data){
-		connection.send(data);
+			connection.send(data);
 	};
 }, 3000);
 
@@ -98,15 +98,16 @@ $(document).ready(function(){
 			return true
 		});
 
-	// setting up emitter loop every 16 ms
-	// 16 ms = 1 sec / (60 Frames are a smooth refresh rate)
-	setInterval(function(){pluto_loop()},16);
+
+// setting up emitter loop every 16 ms
+// 16 ms = 1 sec / (60 Frames are a smooth refresh rate)
+	setInterval(function(){pluto_emit_data()},16);
 
 
 //
 // Pluto Event Emitter Loop
 //
-	var pluto_loop = function(){
+	var pluto_emit_data = function(){
 		// Left Joystick
 		pluto_key_data["up"] = joystick_left.up();
 		pluto_key_data["down"] = joystick_left.down();
