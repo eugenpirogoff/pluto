@@ -1,7 +1,7 @@
 {
   "name": "pluto",
   "description": "websocket remote controller for webapplications",
-  "version": "0.0.1-42",
+  "version": "0.0.1-49",
   "author": {
     "name": "Eugen Pirogoff",
     "email": "eugenpirogoff@me.com",
@@ -13,7 +13,8 @@
     "url": "https://github.com/eugenpirogoff/pluto.git"
   },
   "dependencies": {
-    "express.io": ">= 1.x.x"
+    "express.io": ">= 1.x.x",
+    "bower": ">= 0.3.0"
   },
   "engines": {
     "node": ">= 0.10.x",

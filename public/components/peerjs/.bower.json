@@ -1,0 +1,29 @@
+{
+  "name": "peerjs",
+  "version": "0.2.5",
+  "main": [
+    "dist/peer.js",
+    "dist/peer.min.js"
+  ],
+  "ignore": [
+    ".gitignore",
+    ".gitmodules",
+    "Makefile",
+    "package.json",
+    "bower.json",
+    "bin/**",
+    "deps/**",
+    "lib/**",
+    "test/**"
+  ],
+  "homepage": "https://github.com/creatorrr/peerjs",
+  "_release": "0.2.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.5",
+    "commit": "a34d01c6cdbdf91d1a734502c5b41e293400ea1b"
+  },
+  "_source": "git://github.com/creatorrr/peerjs.git",
+  "_target": "*",
+  "_originalSource": "peerjs"
+}
