@@ -37,7 +37,8 @@ app.get('/controller/:pluto_pin', function(req, res){
 		sessions[req.params.pluto_pin] = true;
 	}
 	else {
-		res.send("there is no game awaiting conntection to that controller : " + req.params.pluto_pin);
+		//res.sendfile(__dirname + '/public/error.html');
+		res.send("there is no game awaiting connection to that controller : " + req.params.pluto_pin + "<br>" + "please load a game first and then the controller");
 	}
 });
 

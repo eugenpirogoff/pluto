@@ -8,7 +8,7 @@
   ],
   "dependencies": {
     "jquery": "latest",
-    "peerjs": "latest",
+    "peerjs": "~0.2.5",
     "bootstrap": "latest",
     "components-font-awesome": "latest"
   },

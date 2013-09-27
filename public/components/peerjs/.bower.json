@@ -24,6 +24,7 @@
     "commit": "a34d01c6cdbdf91d1a734502c5b41e293400ea1b"
   },
   "_source": "git://github.com/creatorrr/peerjs.git",
-  "_target": "*",
-  "_originalSource": "peerjs"
+  "_target": "~0.2.5",
+  "_originalSource": "peerjs",
+  "_direct": true
 }
