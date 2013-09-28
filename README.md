@@ -9,4 +9,4 @@ It uses the wonderfull [HexGL WebGL-Game](https://github.com/BKcore/HexGL) which
 If you have a WebGL capable Webbrowser and a mobile device with a Chrome Browser you [could try it out](http://pluto.jit.su).
 
 
-![image](https://raw.github.com/eugenpirogoff/pluto/master/public/img/pluto.png)
+[![image](https://raw.github.com/eugenpirogoff/pluto/master/public/img/pluto.png)](http://pluto.jit.su)
