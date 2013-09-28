@@ -6,7 +6,7 @@ Pluto is a webapplication controller implementation on the basis of [Socket.io](
 It uses the wonderfull [HexGL WebGL-Game](https://github.com/BKcore/HexGL) which is written by [Thibaut Despoulain](http://bkcore.com/), [virtualJoystick](http://github.com/jeromeetienne/virtualjoystick.js) which is written by [Jerome Etienne](http://jetienne.com) and [IconFonts from Fontello](http://fontello.com).
 
 
-If you have a WebGL capable Webbrowser and a mobile device with a Chrome Browser you [could try it out](http://pluto.jit.su).
+If you have a WebGL capable webbrowser and a mobile device with a android chrome browser you [could try it out](http://pluto.jit.su).
 
 
 ![image](https://raw.github.com/eugenpirogoff/pluto/master/public/img/pluto.png)
