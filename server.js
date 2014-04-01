@@ -52,6 +52,8 @@ app.io.route('pluto_data', function(req){
 // pluto connection joins socket.io
 app.io.route('pluto_join', function(req){
 	req.io.join(req.data);
+	console.log( new Date() + " - Session : " + req.data);
+	console.log( req.handshake.address);
 })
 
 // pluto is leaving socket.io
@@ -60,8 +62,8 @@ app.io.route('pluto_leave', function(req){
 })
 
 // log current websocket sessions on server
-setInterval(function(){
-	console.log("Pluto: concurrent WebSocket connections : " + Object.keys(sessions).length);
-},5000);
+// setInterval(function(){
+// 	console.log("Pluto: concurrent WebSocket connections : " + Object.keys(sessions).length);
+// },5000);
 
 app.listen(process.env.VCAP_APP_PORT || 3000);
