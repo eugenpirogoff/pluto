@@ -1,7 +1,7 @@
 {
   "name": "pluto",
   "description": "websocket remote controller for webapplications",
-  "version": "0.1.0-3",
+  "version": "0.1.0-4",
   "author": {
     "name": "Eugen Pirogoff",
     "email": "eugenpirogoff@me.com",
