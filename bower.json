@@ -7,10 +7,10 @@
     "node_modules"
   ],
   "dependencies": {
-    "jquery": "latest",
+    "jquery": "~2.1.4",
     "peerjs": "~0.3.8",
-    "bootstrap": "latest",
-    "components-font-awesome": "latest"
+    "bootstrap": "~3.3.4",
+    "components-font-awesome": "~4.3.0"
   },
   "private": true
 }
