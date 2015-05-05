@@ -10,3 +10,7 @@ If you have a fast internet connection, a WebGL capable webbrowser and a mobile 
 
 
 [![image](https://raw.github.com/eugenpirogoff/pluto/master/public/img/pluto.png)](http://pluto.jit.su)
+
+[![image](https://raw.githubusercontent.com/eugenpirogoff/pluto/master/public/img/controller_starting.jpg)]
+[![image](https://raw.githubusercontent.com/eugenpirogoff/pluto/master/public/img/controller_moving.jpg)]
+[![image](https://raw.githubusercontent.com/eugenpirogoff/pluto/master/public/img/hexgl_game.png)]
