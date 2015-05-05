@@ -9,10 +9,10 @@ It uses the wonderful [HexGL WebGL-Game](https://github.com/BKcore/HexGL) which 
 If you have a fast internet connection, a WebGL capable webbrowser and a mobile device with a android chrome or any other WebSockets or WebRTC capable browser you [could try it out](http://pluto.jit.su).
 
 
-[![image](https://raw.github.com/eugenpirogoff/pluto/master/public/img/pluto.png)](http://pluto.jit.su)
+[![image](https://raw.github.com/eugenpirogoff/pluto/master/public/img/pluto.png =600x)](http://pluto.jit.su)
 
-[![image](https://raw.githubusercontent.com/eugenpirogoff/pluto/master/public/img/controller_starting.jpg =450x)](http://pluto.jit.su)
+![image](https://raw.githubusercontent.com/eugenpirogoff/pluto/master/public/img/controller_phone_starting.jpg =600x)
 
-[![image](https://raw.githubusercontent.com/eugenpirogoff/pluto/master/public/img/controller_moving.jpg =450x)](http://pluto.jit.su)
+![image](https://raw.githubusercontent.com/eugenpirogoff/pluto/master/public/img/controller_phone_moving.jpg =600x)
 
-[![image](https://raw.githubusercontent.com/eugenpirogoff/pluto/master/public/img/hexgl_game.png =6000x)](http://pluto.jit.su)
+![image](https://raw.githubusercontent.com/eugenpirogoff/pluto/master/public/img/hexgl_game.png =600x)
